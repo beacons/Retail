@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#093f57</color>
+    <color name="colorPrimaryDark">#04344A</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="mWindowBackground">#104E67</color>
+
+    <!--From Factory-->
+    <color name="primary">#2A2A31</color>
+    <color name="primary_back">#191949</color>
+    <color name="accent">#7D7E82</color>
+
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+    <color name="error_col">#E0202F</color>
+
+    <color name="grid_view_background">#287186</color>
+    <color name="textBackground1">#3A3A3A</color>
+    <color name="textBackground2">#2D2D2D</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="toolHead">#B8B8B8</color>
+    <color name="progress_popup_background">#80eeeeee</color>
+
+    <color name="enabled_color">#757575</color>
+    <color name="disabled_color">#757575</color>
 </resources>
