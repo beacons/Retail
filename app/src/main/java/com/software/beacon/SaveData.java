@@ -1,5 +1,9 @@
 package com.software.beacon;
 
+/**
+ * Created by LENOVO on 19-03-2018.
+ */
+
 import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -24,12 +28,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 
 
-public class Get_Result extends AsyncTask<String, Void, String> {
-    public ValidationResponse delegate;
-    public HomeResponse homeDelegate;
+public class SaveData extends AsyncTask<String, Void, String> {
+    private ValidationResponse delegate;
     Context ctx;
-    String comingFrom = null;
-    Get_Result(Context ctx) {
+
+    SaveData(Context ctx) {
         this.ctx = ctx;
     }
     //int rf;
@@ -38,8 +41,6 @@ public class Get_Result extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
         String resp = "";
-        if(params.length==3)
-            if(params[2]!=null) comingFrom = params[2];
         try {
             URL DBUrl = new URL(params[0]);
 
@@ -49,7 +50,9 @@ public class Get_Result extends AsyncTask<String, Void, String> {
             httpURLConnection.setRequestMethod("POST");
             httpURLConnection.setDoOutput(true);
 
-            String data = URLEncoder.encode("query", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8");
+            String data = URLEncoder.encode("user_id", "UTF-8") + "=" + URLEncoder.encode(params[1], "UTF-8") + "&"
+                    + URLEncoder.encode("product_id", "UTF-8") + "=" + URLEncoder.encode(params[2], "UTF-8") + "&"
+                    + URLEncoder.encode("qty", "UTF-8") + "=" + URLEncoder.encode(params[3], "UTF-8");
             OutputStream OS = httpURLConnection.getOutputStream();
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(OS, "UTF-8"));
             bufferedWriter.write(data);
@@ -88,9 +91,9 @@ public class Get_Result extends AsyncTask<String, Void, String> {
 
     @Override
     protected void onPostExecute(String s) {
-        Log.d("dopost", "here" + s + " "+ctx.getClass());
+        Log.d("dopost", "here" + s);
         boolean isJSON = true;
-        if(!s.equals("None") && !s.equals("ok")) {
+        if(!s.equals("None")) {
             try {
                 new JSONObject(s);
             } catch (JSONException ex) {
@@ -102,21 +105,16 @@ public class Get_Result extends AsyncTask<String, Void, String> {
             }
         }
         if (s.equals("Connection Error. Please Try Again! ") || s.equals("Socket TimedOut! ") || s.equals("Malformed URL! ") || s.equals("404 Not Found")) {
-            if(comingFrom!=null)
-                homeDelegate.homeResponse(false,s);
-            else delegate.response(false, s);
+            delegate.response(false, s);
         }
         else if(!isJSON )
-            if(comingFrom!=null) homeDelegate.homeResponse(false, "Database server not reachable !");
-            else delegate.response(false, "Database server not reachable !");
+            delegate.response(false, "Database server not reachable !");
         else {
             Log.e("Result", s);
             if (!s.equals("None")) {
-                if(comingFrom!=null) homeDelegate.homeResponse(true,s);
-                else delegate.response(true, s);
+                delegate.response(true, s);
             } else {
-                if(comingFrom!=null) homeDelegate.homeResponse(false,s);
-                else delegate.response(false, s);
+                delegate.response(false, s);
             }
         }
     }

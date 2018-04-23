@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@mipmap/ic_person_black_24dp"
+        android:title="My Account" />
+
+    <item
+        android:id="@+id/nav_scan"
+        android:icon="@drawable/barcode_scanner"
+        android:title="Scan &amp; Buy" />
+
+    <item
+        android:id="@+id/nav_offer"
+        android:icon="@drawable/ic_discount"
+        android:title="Deals &amp; Offers" />
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@mipmap/logout_24"
+        android:title="Logout" />
+</menu>

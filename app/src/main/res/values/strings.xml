@@ -14,4 +14,11 @@
     </string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="Rs">\u20B9&#160;</string>
+    <string name="validity">Valid Till:&#160;</string>
+    <string name="qty">Qty:&#160;</string>
+    <string name="cart_total">Cart Total</string>
+    <string name="cart_discount">Cart Discount</string>
+    <string name="total_payable">Total Payable</string>
+    <string name="price_details">PRICE DETAILS</string>
 </resources>
